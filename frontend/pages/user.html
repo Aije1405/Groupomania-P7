@@ -13,13 +13,14 @@
 
 <body>
 
-<!--Barre de navigation-->
+    <!--Barre de navigation-->
     <div class="bg-light">
         <div class="container">
             <div class="row">
                 <nav class=" col navbar navbar-expand-lg navbar-light bg-light">
                     <a class="navbar-brand" href="#">
-                        <img src="../logos/icon.png" alt="logo groupomania" width="30" height="30" class="d-inline-block align-top" loading="lazy">
+                        <img src="../logos/icon.png" alt="logo groupomania" width="30" height="30"
+                            class="d-inline-block align-top" loading="lazy">
                         GROUPOMANIA
                     </a>
                     <div id="navbarContent" class="collapse navbar-collapse"></div>
@@ -28,47 +29,69 @@
         </div>
     </div>
 
-<!--Message d'accueil-->
+    <!--Message d'accueil-->
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
-          <h1 class="display-4">Bienvenue !</h1>
-          <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores vero sit porro officiis ut atque laudantium, reprehenderit adipisci vel repellendus cupiditate necessitatibus! Recusandae molestiae asperiores sunt ea natus explicabo! Magni.</p>
+            <h1 class="display-4">Bienvenue !</h1>
+            <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores vero sit porro officiis ut
+                atque laudantium, reprehenderit adipisci vel repellendus cupiditate necessitatibus! Recusandae molestiae
+                asperiores sunt ea natus explicabo! Magni.</p>
         </div>
     </div>
 
-<!--formulaire signup-->
-    <form class="container">
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="inputName">Nom</label>
-            <input type="text" class="form-control" id="inputName">
-          </div>
-          <div class="form-group col-md-6">
-            <label for="inputFirstname">Prénom</label>
-            <input type="text" class="form-control" id="inputFirstname">
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="inputEmail">Email</label>
-          <input type="email" class="form-control" id="inputEmail">
-        </div>
-        <div class="form-group">
-          <label for="inputPassword">Mot de passe</label>
-          <input type="password" class="form-control" id="inputPassword">
-        </div>
-        <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="inputPosition">Poste</label>
-              <input type="text" class="form-control" id="inputPosition" placeholder="Votre poste">
+    <!--formulaire signup-->
+    <div class="container">
+        <form id="form-signup">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputName">Nom</label>
+                    <input type="text" class="form-control" id="inputName">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputFirstname">Prénom</label>
+                    <input type="text" class="form-control" id="inputFirstname">
+                </div>
             </div>
-            <div class="form-group col-md-6">
-              <label for="inputDepartment">Département</label>
-              <input type="text" class="form-control" id="inputDepartment" placeholder="Votre département">
+            <div class="form-group">
+                <label for="inputEmail">Email</label>
+                <input type="email" class="form-control" id="inputEmail">
             </div>
-          </div>
-        <button type="submit" class="btn btn-primary">Créez mon compte !</button>
-      </form>
+            <div class="form-group">
+                <label for="inputPassword">Mot de passe</label>
+                <input type="password" class="form-control" id="inputPassword"
+                    placeholder="Le mot de passe doit comporter entre 8 et 12 caractères, avec au moins 1 minuscule, 1 majuscule, 1 chiffre et pas d'espace">
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputPosition">Poste</label>
+                    <input type="text" class="form-control" id="inputPosition" placeholder="Votre poste">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputDepartment">Département</label>
+                    <input type="text" class="form-control" id="inputDepartment" placeholder="Votre département">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Créez mon compte !</button>
+        </form>
+    </div>
 
+
+    <!--footer-->
+    <footer class=" fixed-bottom bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <ul class="list-inline text-center">
+                        <li style="text-decoration: none" class="list-inline-item"><a href="#">Groupomania Intranet</a>
+                        </li>
+                        <li class="list-inline-item">.</li>
+                        <li style="text-decoration: none" class="list-inline-item"><a href="#">Conditions
+                                d'utilisations</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
 
 
 
