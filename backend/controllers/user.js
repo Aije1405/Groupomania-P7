@@ -35,7 +35,7 @@ exports.signup = (req, res, next) => {
         {
             if(error)
             {
-                return res.status(400).json({ error: "Problème requete" });
+                return res.status(400).json({ error: "erreur requête" });
             }
             res.status(201).json({ message: 'Utilisateur créé !'});
         });

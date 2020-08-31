@@ -4,7 +4,11 @@ const path = require("path");
 const helmet = require("helmet");
 
 
+const userRoutes = require("./routes/user");
+
+
 const app = express();
+
 
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
@@ -20,7 +24,12 @@ app.use((req, res, next) => {
     next();
   });
 
+
 app.use(bodyParser.json());
 app.use (helmet()); // L'application utilise toutes les protections helmet
+
+
+
+
 
 module.exports = app;

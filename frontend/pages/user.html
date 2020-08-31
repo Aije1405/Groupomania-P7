@@ -12,7 +12,8 @@
 </head>
 
 <body>
-    <!--Barre de navigation-->
+
+<!--Barre de navigation-->
     <div class="bg-light">
         <div class="container">
             <div class="row">
@@ -27,12 +28,46 @@
         </div>
     </div>
 
+<!--Message d'accueil-->
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
           <h1 class="display-4">Bienvenue !</h1>
           <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores vero sit porro officiis ut atque laudantium, reprehenderit adipisci vel repellendus cupiditate necessitatibus! Recusandae molestiae asperiores sunt ea natus explicabo! Magni.</p>
         </div>
-      </div>
+    </div>
+
+<!--formulaire signup-->
+    <form class="container">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputName">Nom</label>
+            <input type="text" class="form-control" id="inputName">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputFirstname">Prénom</label>
+            <input type="text" class="form-control" id="inputFirstname">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputEmail">Email</label>
+          <input type="email" class="form-control" id="inputEmail">
+        </div>
+        <div class="form-group">
+          <label for="inputPassword">Mot de passe</label>
+          <input type="password" class="form-control" id="inputPassword">
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputPosition">Poste</label>
+              <input type="text" class="form-control" id="inputPosition" placeholder="Votre poste">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputDepartment">Département</label>
+              <input type="text" class="form-control" id="inputDepartment" placeholder="Votre département">
+            </div>
+          </div>
+        <button type="submit" class="btn btn-primary">Créez mon compte !</button>
+      </form>
 
 
 
