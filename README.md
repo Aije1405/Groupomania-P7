@@ -1,2 +1,3 @@
 Groupomania-P7
-Packages du backend : nodeJS, express, body-parser, helmet, bcrypt, jsonwebtoken, express-bouncer, mysql, multer
+Backend packages : nodeJS, express, body-parser, helmet, bcrypt, jsonwebtoken, express-bouncer, mysql, multer
+Frontend : Vue.js
