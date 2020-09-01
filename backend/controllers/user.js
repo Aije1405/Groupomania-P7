@@ -49,7 +49,7 @@ exports.login = (req, res, next) => {
   const email = req.body.email;        
 
   const insertLogin = [email];
-  const queryLogin = ("SELECT id, firstname, lastname, email, password, role FROM users WHERE email = ?");
+  const queryLogin = ("SELECT id, firstname, lastname, email, password, isAdmin FROM users WHERE email = ?");
   connection.query(queryLogin, insertLogin, (error, rows, fields) => {
   const result = rows[0];
 
@@ -61,7 +61,7 @@ exports.login = (req, res, next) => {
     const id = result.id;
     const firstname = result.firstname;
     const lastname = result.lastname;
-    const role = result.role;
+    const isAdmin = result.isAdmin;
     const token = jwt.sign({ id: id }, "RANDOM_TOKEN_SECRET", {
             expiresIn: "24h",
           });
@@ -79,7 +79,7 @@ exports.login = (req, res, next) => {
           id: id,
           firstname: firstname,
           lastname: lastname,
-          role: role,
+          isAdmin: isAdmin,
           token: token
         });
       })
