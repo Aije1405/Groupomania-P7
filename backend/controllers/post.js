@@ -1,5 +1,5 @@
 //imports
-let models = require("../models");
+let models = require("../models/post");
 let utils = require("../utils/jwtokenUtils");
 const fs = require('fs');
 
