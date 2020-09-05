@@ -1,5 +1,5 @@
 'use strict';
-module.exports = (sequelize, DataTypes) => {
+module.exports = (sequelize, DataTypes) => { //on utilise sequelize
   const Post = sequelize.define('messages', {
     messageTitle: DataTypes.STRING,
     messageContent: DataTypes.STRING,

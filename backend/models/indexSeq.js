@@ -1,3 +1,4 @@
+//connexion sequelize à la base de données
 'use strict';
 const fs = require("fs");
 const path = require("path");

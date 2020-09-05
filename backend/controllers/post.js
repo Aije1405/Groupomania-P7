@@ -11,7 +11,7 @@ exports.create = (req, res) => {
     //identifier qui créé le message
     let id = utils.getUserId(req.headers.authorization)
     models.User.findOne({
-        attributes: ['id', 'email', 'firstname', 'lastname', 'position', 'department'],
+        attributes: ['id', 'email', 'firstname', 'lastname', 'position', 'department'], //requête sequelize
         where: { id: id }
     })
         .then(user => {
