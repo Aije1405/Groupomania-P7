@@ -11,7 +11,7 @@ import Header from "./components/header";
 
 export default {
   components: {
-    header
+    Header
   }
 };
 </script>

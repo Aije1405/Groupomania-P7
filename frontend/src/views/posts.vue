@@ -8,9 +8,9 @@
 
 <script>
 import axios from "axios";
-import CreatePost from "../components/CreatePost";
-import Post from "../components/Post";
-import modalBoxModerate from "../components/ModifPost";
+import CreatePost from "../components/createPost";
+import Post from "../components/post";
+import modalBoxModerate from "../components/modifyPost";
 
 export default {
   name: "Posts",

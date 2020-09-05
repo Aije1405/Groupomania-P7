@@ -100,8 +100,8 @@ export default {
       let newContent = document.getElementById("inputNewContent").value;
 
       //On verifie si changements existent ...
-      let newTitle = false;
-      let newContent = false;
+      //let newTitle = false;
+      //let newContent = false;
       if (newTitle !== this.post.messageTitle || newContent !== this.post.messageContent || this.deleteImg != false) {
         newTitle = true;
         newContent = true;

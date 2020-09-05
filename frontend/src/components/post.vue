@@ -9,7 +9,7 @@
         </svg>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuPost">
           <button
-            class="dropdown-item modifPost"
+            class="dropdown-item modifyPost"
             data-toggle="modal"
             data-target="#modalEditPost"
             type="button"
