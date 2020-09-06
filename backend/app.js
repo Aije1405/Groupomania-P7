@@ -2,9 +2,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
 const helmet = require("helmet");
+
 require('dotenv').config()
-
-
 
 const userRoutes = require('./routes/user');
 const postRoutes = require('./routes/post');
