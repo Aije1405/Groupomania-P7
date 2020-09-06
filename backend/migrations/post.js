@@ -2,7 +2,7 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Messages', {
+    await queryInterface.createTable('messages', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -17,22 +17,23 @@ module.exports = {
           key: 'id'
         }
       },
-      messageTitle: {
+      content: {
         type: Sequelize.STRING
       },
-      messageContent: {
+      attachement: {
         type: Sequelize.STRING
       },
-      messageImage: {
-        type: Sequelize.STRING
-      },
-      datePosted: {
+      createdAt: {
         allowNull: false,
         type: Sequelize.DATE
       },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      }
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Messages');
+    await queryInterface.dropTable('messages');
   }
 };
