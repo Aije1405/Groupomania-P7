@@ -25,10 +25,10 @@ DROP TABLE IF EXISTS `messages`;
 CREATE TABLE `messages` (
   `id` mediumint unsigned NOT NULL AUTO_INCREMENT,
   `userId` smallint NOT NULL,
-  `messageTitle` varchar(50) NOT NULL,
-  `messageContent` text NOT NULL,
-  `messageImage` varchar(255) DEFAULT NULL,
-  `datePosted` date NOT NULL,
+  `content` text NOT NULL,
+  `attachement` varchar(255) DEFAULT NULL,
+  `createdAt` datetime NOT NULL,
+  `updatedAt` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_user_id` (`userId`),
   CONSTRAINT `fk_user_id` FOREIGN KEY (`userId`) REFERENCES `users` (`id`)
@@ -53,17 +53,15 @@ DROP TABLE IF EXISTS `users`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `users` (
   `id` smallint NOT NULL AUTO_INCREMENT,
-  `firstname` varchar(30) NOT NULL,
-  `lastname` varchar(30) NOT NULL,
-  `email` varchar(200) NOT NULL,
-  `password` binary(72) NOT NULL,
-  `position` varchar(50) NOT NULL,
-  `department` varchar(50) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `isAdmin` tinyint(1) NOT NULL,
   `createdAt` date NOT NULL,
-  `lastConnectedAt` date NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `updatedAt` date NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `email` (`email`)
+  UNIQUE KEY `email` (`email`),
+  UNIQUE KEY `email_2` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -85,4 +83,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-09-01 13:05:53
+-- Dump completed on 2020-09-06 13:10:45
