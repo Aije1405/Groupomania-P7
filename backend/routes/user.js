@@ -4,6 +4,7 @@ const bouncer = require ("express-bouncer")(15000, 900000, 3); //Importation de 
 //Si mot de passe erronné au bout de 3 fois, il y a un délai compris entre 15s et 15mn avant de pouvoir se reconnecter.
 
 const userCtrl = require("../controllers/user"); //importation logique métier - controller user
+
 const auth = require("../middleware/authorization");
 
 router.post("/signup", userCtrl.signup);

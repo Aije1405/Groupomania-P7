@@ -1,8 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const postCtrl = require("../controllers/post");//importation logique métier
+
 const auth = require("../middleware/authorization");
 const multer = require("../middleware/multer-configuration");
+
+const postCtrl = require("../controllers/post");//importation logique métier
 
 //routes des messages postés
 router.put("/update", auth, multer, postCtrl.update)
