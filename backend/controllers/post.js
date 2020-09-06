@@ -1,37 +1,35 @@
 //imports
-let models = require("../models/post");
-let utils = require("../utils/jwtokenUtils");
+let models = require('../models');
+let utils = require('../utils/jwtokenUtils');
 const fs = require('fs');
 
 
 //création d'un message
 exports.create = (req, res) => {
     //déclaration de l'url de l'image
-    let messageImage
+    let attachmentURL
     //identifier qui créé le message
     let id = utils.getUserId(req.headers.authorization)
     models.User.findOne({
-        attributes: ['id', 'email', 'firstname', 'lastname', 'position', 'department'], //requête sequelize
+        attributes: ['id', 'email', 'username'],
         where: { id: id }
     })
         .then(user => {
             if (user !== null) {
-                //récupération du corps du post
-                let messageTitle = req.body.messageTitle;
-                let messageContent = req.body.messageContent;
+                //récupération du corps du message
+                let content = req.body.content;
                 if (req.file != undefined) {
-                    messageImage = `${req.protocol}://${req.get('host')}/images/${req.file.filename}`;
+                    attachmentURL = `${req.protocol}://${req.get('host')}/images/${req.file.filename}`;
                 }
                 else {
-                    messageImage == null
+                    attachmentURL == null
                 };
-                if ((messageTitle == 'null' && messageContent == 'null' && messageImage == null)) {
+                if ((content == 'null' && attachmentURL == null)) {
                     res.status(400).json({ error: 'Rien à publier' })
                 } else {
                     models.Post.create({
-                        messageTitle: messageTitle,
-                        messageContent: messageContent,
-                        messageImage: messageImage,
+                        content: content,
+                        attachement: attachmentURL,
                         UserId: user.id
                     })
                         .then((newPost) => {
@@ -48,47 +46,47 @@ exports.create = (req, res) => {
         .catch(error => res.status(500).json(error));
 }
 
-//afficher les posts sur le mur
+//afficher les message sur le mur
 exports.listMsg = (req, res) => {
     models.Post.findAll({
         include: [{
             model: models.User,
-            attributes: ['firstname', 'lastname', 'position', 'department']
+            attributes: ['username']
         }],
-        order: [['datePosted', 'DESC']]
+        order: [['createdAt', 'DESC']]
     })
         .then(posts => {
             if (posts.length > null) {
                 res.status(200).json(posts)
             } else {
-                res.status(404).json({ error: 'Pas de message à afficher' })
+                res.status(404).json({ error: 'Pas de messages à afficher' })
             }
         })
         .catch(err => res.status(500).json(err))
 }
 
-//suppression d'un post
+//suppression d'un message
 exports.delete = (req, res) => {
     //req => userId, postId, user.isAdmin
     let userOrder = req.body.userIdOrder;
     //identification du demandeur
     let id = utils.getUserId(req.headers.authorization)
     models.User.findOne({
-        attributes: ['id', 'email', 'firstname', 'lastname', 'isAdmin'],
+        attributes: ['id', 'email', 'username', 'isAdmin'],
         where: { id: id }
     })
         .then(user => {
-            //vérification que le demandeur est soit l'admin soit le user qui a posté 
+            //vérification que le demandeur est soit l'admin soit celui qui a posté le message
             if (user && (user.isAdmin == true || user.id == userOrder)) {
-                console.log('Suppression du post id :', req.body.postId);
+                console.log('Suppression id du message :', req.body.postId);
                 models.Post
                     .findOne({
                         where: { id: req.body.postId }
                     })
                     .then((postFind) => {
 
-                        if (postFind.messageImage) {
-                            const filename = postFind.messageImage.split('/images/')[1];
+                        if (postFind.attachement) {
+                            const filename = postFind.attachement.split('/images/')[1];
                             console.log(filename);
                             fs.unlink(`images/${filename}`, () => {
                                 models.Post
@@ -109,31 +107,30 @@ exports.delete = (req, res) => {
                         }
                     })
                     .catch(err => res.status(500).json(err))
-            } else { res.status(403).json('suppression non autorisée par cet utilisateur') }
+            } else { res.status(403).json('suppression du message par utilisateur non autorisé') }
         })
         .catch(error => res.status(500).json(error));
 };
 
-//modification d'un post
+//modification d'un message
 exports.update = (req, res) => {
     //récupération de l'id du demandeur pour vérification
     let userOrder = req.body.userIdOrder;
     //identification du demandeur
     let id = utils.getUserId(req.headers.authorization);
     models.User.findOne({
-        attributes: ['id', 'email', 'firsname', 'lastname', 'position', 'department','isAdmin'],
+        attributes: ['id', 'email', 'username', 'isAdmin'],
         where: { id: id }
     })
         .then(user => {
-            //vérification que le demandeur est soit l'admin soit le user qui a posté 
+            //vérification que le demandeur est soit l'admin soit celui qui a posté le message
             if (user && (user.isAdmin == true || user.id == userOrder)) {
-                console.log('modification réussie :', req.body.postId);
+                console.log('Modif ok pour le message :', req.body.postId);
                 models.Post
                     .update(
                         {
-                            messageTitle: req.body.newTitle,
-                            messageContent: req.body.newContent,
-                            messageImage: req.body.newImage
+                            content: req.body.newText,
+                            attachement: req.body.newImg
                         },
                         { where: { id: req.body.postId } }
                     )
@@ -141,7 +138,7 @@ exports.update = (req, res) => {
                     .catch(err => res.status(500).json(err))
             }
             else {
-                res.status(401).json({ error: 'suppression non autorisée par cet utilisateur' })
+                res.status(401).json({ error: 'suppression du message par utilisateur non autorisé' })
             }
         }
         )
