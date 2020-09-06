@@ -1,7 +1,7 @@
 //imports
-let bcrypt = require("bcrypt");
-let jwt = require("jsonwebtoken");
-let models = require("../models/indexSeq");
+let bcrypt = require('bcrypt');
+let jwt = require('jsonwebtoken');
+let models = require('../models');
 
 module.exports ={
     isAdmin:function(user){

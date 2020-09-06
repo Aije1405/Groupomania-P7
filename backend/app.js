@@ -6,8 +6,8 @@ require('dotenv').config()
 
 
 
-const userRoutes = require("./routes/user");
-const postRoutes = require("./routes/post");
+const userRoutes = require('./routes/user');
+const postRoutes = require('./routes/post');
 
 const app = express();
 
@@ -19,7 +19,10 @@ app.use((req, res, next) => {
     next();
   });
 
+//parse les corps de requête
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
 app.use (helmet()); // L'application utilise toutes les protections helmet
 
 //middleware
