@@ -23,10 +23,11 @@
           <div class="user-info__block">
             <p class="user-info__block__title title mb-0">Mot de passe</p>
             <small class="user-info__block__output">
-              Doit contenir au minimum 8 caractères dont une majuscule, une miniscule et un chiffre </small>
+              Doit contenir au minimum 6 caractères dont une majuscule, une miniscule et un chiffre </small>
           </div>
           <button type="button" class="btn btn-secondary mr-5" data-toggle="modal" data-target="#BoxModalChgPwd" @click="testInputs">Modifier mes informations ⚒</button>
-          <!--Box Modal-->
+
+<!--modale-->
           <div class="modal fade" id="BoxModalChgPwd" tabindex="-1" role="dialog" aria-labelledby="BoxModalChgPwd__title" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
@@ -49,10 +50,10 @@
                       <small
                         id="emailHelp"
                         class="form-text text-muted"
-                      >Au minimum 8 caractères dont une majuscule, un minuscule et un chiffre</small>
+                      >Au minimum 6 caractères dont une majuscule, un minuscule et un chiffre</small>
                     </div>
                     <div class="form-group">
-                      <label for="RepeatInputNewPassword">Confirmer le nouveau mot de passe</label>
+                      <label for="RepeatInputNewPassword">Je confirme mon nouveau mot de passe</label>
                       <input
                         type="password"
                         class="form-control"
@@ -70,7 +71,8 @@
               </div>
             </div>
           </div>
-          <!--END: Box Modal-->
+    
+
         </div>
         <button type="button" class="btn btn-danger white d-block mx-auto mt-5 mb-2" @click="deleteAccount">Supprimer mon compte ☠ </button>
       </div>
@@ -118,8 +120,7 @@ export default {
 
     // fonction pour changer le mot de passe
     changePassword() {
-      //Controle de la saisie du nouveau password
-      //Controle de repeat et non null
+      //vérification input nouveau password
       if (
         this.changePwd.newPassword == this.changePwd.RepeatNewPassword &&
         this.changePwd.newPassword != "" &&
@@ -155,10 +156,10 @@ export default {
         this.retourAPI = "Les mots de passe ne sont pas identiques ou ne respectent pas les conditions requises";
       }
     },
-    // fonction pour tester les saisies de l'user dasn les inputs
+
+    //vérification inputs
     testInputs() {
-      //8 caractères dont au minimum une majuscule, une minuscule et un chiffre
-      const regexPassword = /((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20})/;
+      const regexPassword = /((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20})/;
       let inputNewPwd = document.getElementById("InputNewPassword");
       let inputRepeatNewPwd = document.getElementById("RepeatInputNewPassword");
       inputNewPwd.addEventListener("input", function(e) {
@@ -182,7 +183,7 @@ export default {
       });
     }
   },
-  // modifications seront effectuées lorsque la requête sera faite
+  //modifications seront effectuées lorsque la requête sera faite
   mounted() {
     this.$store.dispatch("getUserInfos");
   }

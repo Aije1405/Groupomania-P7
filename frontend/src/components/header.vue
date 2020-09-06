@@ -8,7 +8,7 @@
       <ul class="navbar-nav mt-2">
         
         <li class="nav-item " v-if="user.token !== null">
-          <router-link class="nav-link " to="/wall"><button type="button" class="btn btn-secondary">Actualités 💬</button></router-link>
+          <router-link class="nav-link " to="/wall"><button type="button" class="btn btn-secondary">Publications 💬</button></router-link>
         </li>
         <li class="nav-item" v-if="user.token == null">
           <router-link class="nav-link" to="/signup"><button type="button" class="btn btn-secondary">+ Créer un compte</button></router-link>

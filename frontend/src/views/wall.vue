@@ -1,5 +1,5 @@
 <template>
-  <div id="posts" class="posts">
+  <div id="wall" class="wall">
     <CreatePost />
     <Post v-for="post in allPosts" v-bind:key="post.id" :post="post" @infosPost="setInfos" />
     <modalBoxModerate :post="post" />
@@ -8,12 +8,12 @@
 
 <script>
 import axios from "axios";
-import CreatePost from "../components/createPost";
-import Post from "../components/post";
-import modalBoxModerate from "../components/modifyPost";
+import CreatePost from "../components/CreatePost";
+import Post from "../components/Post";
+import modalBoxModerate from "../components/ModifPost";
 
 export default {
-  name: "Posts",
+  name: "Wall",
   components: {
     CreatePost,
     Post,
@@ -23,9 +23,8 @@ export default {
     return {
       post: {
         id: "",
-        messageTitle: "",
-        messageContent: "",
-        messageImage: ""
+        content: "",
+        image: ""
       },
       allPosts: []
 
@@ -43,13 +42,13 @@ export default {
           Authorization: "Bearer " + localStorage.getItem("token")
         }
       })
-      //.get("http://localhost:3000/api/post",this.$store.state.headerParams)    !!!!!
+      //.get("http://localhost:3000/api/post",this.$store.state.headerParams)
       .then(response => {
         console.log("post", response.data);
         this.allPosts = response.data;
       })
       .catch(error => {
-        console.log(error); //affiche pas le message 'normalement' envoyé par le back     !!!!!!
+        console.log(error); 
       }),
       this.$store.dispatch("getUserInfos");
   }
@@ -57,6 +56,7 @@ export default {
 </script>
 
 <style  scope>
+
 .wall {
   width: 90%;
   margin: auto;

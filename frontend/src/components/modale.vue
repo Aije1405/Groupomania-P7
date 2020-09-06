@@ -1,17 +1,15 @@
 <template>
-
         <div class="bloc-modale" v-if="revele">
-
                 <div v-on:click="toggleModale" class="overlay"> </div>
-
                 <div class="modale card">
                     <div v-on:click="toggleModale" class="btn-modale btn btn-danger">X</div>
-                    <p>⚠ Oups, votre e-mail ou votre mot de passe est incorrect ! Veuillez rééssayer !</p>
+                    <p>Attention, e-mail ou mot de passe incorrect ! Veuillez rééssayer !</p>
                 </div>
-
         </div>
 
+
 </template>
+
 
 <script>
 
@@ -21,8 +19,6 @@ export default {
 }
 
 </script>
-
-
 
 <style>
 .bloc-modale {

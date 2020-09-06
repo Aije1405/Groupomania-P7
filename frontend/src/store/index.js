@@ -6,7 +6,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    // création d'un modele d'user dans la bibliothèque
+    //création modèle user
     user: {
       username: 'Nc',
       userId: 'Nc',
@@ -17,7 +17,7 @@ export default new Vuex.Store({
     editOption: ""
   },
   mutations: {
-    // on sauvegarde les infos des user dans les champs
+    //sauvegarde infos des user dans les champs
     saveUserInfos(state, [username, userId, email, isAdmin]) {
         state.user.username = username,
           state.user.userId = userId,
@@ -31,11 +31,11 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    // requête pour modifier les données de l'user
+    //requête modification données user
     getUserInfos(context) {
       axios
         .get("http://localhost:3000/api/user/me", {
-          // on verifie si l'user à une autorisation : TOKEN valide ...
+          //vérification token valide
           headers: {
             Authorization: "Bearer " + localStorage.getItem("token")
           }

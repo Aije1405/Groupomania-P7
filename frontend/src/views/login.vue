@@ -24,12 +24,12 @@
 //import de la bibliothèque et d'axios pour les requêtes
 import axios from "axios";
 import { mapState } from "vuex";
-// import du component Modale pour l'alerte du mot de passe ou email incorrect
+//import du component modale pour l'alerte du mot de passe ou email incorrect
 import modale from "../components/modale"
 
 
 export default {
-  name: "Login",
+  name: "signUp",
   data() {
     return {
       dataLogin: {
@@ -47,11 +47,11 @@ export default {
     ...mapState(["user"])
   },
   methods: {
-    // fonction modale qui revele ou non la modale si il y a une erreur
+    //fonction modale pour éventuelle erreur
     toggleModale: function(){
       this.revele = !this.revele
     },
-    // requête pour connecter l'user déja existant
+    //requête pour connecter user déja existant
     logIn() {
       if (
         this.dataLogin.email !== null || this.dataLogin.password !== null 
@@ -68,7 +68,7 @@ export default {
             })
           
       } else {
-        console.log("erreur de connexion");
+        console.log("oops !");
       }
     }
   }

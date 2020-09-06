@@ -25,12 +25,14 @@ const routes = [
     component: () => import('../views/user.vue')
   },
   {
-    path: '/posts',
-    name: 'Posts',
-    component: () => import('../views/posts.vue')
+    path: '/Wall',
+    name: 'Wall',
+    component: () => import('../views/wall.vue')
   }
 ]
 
-const router = new VueRouter({ routes })
+const router = new VueRouter({
+  routes
+})
 
 export default router

@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Header from "./components/header";
+import Header from "./components/Header";
 
 
 export default {
@@ -16,4 +16,5 @@ export default {
 };
 </script>
 
-<style ></style>
+<style >
+</style>

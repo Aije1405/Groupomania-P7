@@ -1,7 +1,7 @@
 <template>
   <div class="card mb-4 w-75 mx-auto">
     <div class="card-header d-flex justify-content-between">
-      <div> ~ Message posté par : <strong class="text">{{post.User.username}}</strong> le <strong class="text">{{post.createdAt}}</strong> ~</div>
+      <div> ~ Publié par : <strong class="text">{{post.User.username}}</strong> le <strong class="text">{{post.createdAt}}</strong> ~</div>
       <div class="dropdown" v-if="user.isAdmin==true || user.username == post.User.username">
         <svg class="bi bi-three-dots dropdown-toggle" id="dropdownMenuPost"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
           width="1.2em" height="1.2em" viewBox="0 0 15 15" fill="currentColor">
@@ -9,26 +9,23 @@
         </svg>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuPost">
           <button
-            class="dropdown-item modifyPost"
+            class="dropdown-item modifPost"
             data-toggle="modal"
             data-target="#modalEditPost"
             type="button"
-            @click="emitInfoPost();changeEditStyle('modify');">Modifier</button>
+            @click="emitInfoPost();changeEditStyle('modify');">Modifier le message</button>
           <button
             class="dropdown-item deletePost"
             data-toggle="modal"
             data-target="#modalEditPost"
             type="button"
-            @click="emitInfoPost();changeEditStyle('delete');">Supprimer</button>
+            @click="emitInfoPost();changeEditStyle('delete');">Supprimer le message</button>
         </div>
       </div>
     </div>
     <div class="card-body">
-      <div class="card-text" v-if="post.messageTitle!=='null'">
-        <p class="mb-0">  {{post.messageTitle}}  </p>
-      </div>
-      <div class="card-text" v-if="post.messageContent!=='null'">
-        <p class="mb-0">  {{post.messageContent}}  </p>
+      <div class="card-text" v-if="post.content!=='null'">
+        <p class="mb-0">  {{post.content}}  </p>
       </div>
       <div class="card-img-top w-75 mx-auto" v-if="post.attachement">
         <img :src="post.attachement" alt="..." class="w-100" />
@@ -38,7 +35,7 @@
 </template>
 
 <script>
-// import de la bibliothèque vuex
+//import de la bibliothèque vuex
 import { mapState } from "vuex";
 
 export default {
@@ -57,9 +54,9 @@ export default {
     }
   },
   methods: {
-    //création de fonction pour modifier ou supprimer le post
+    //création de fonction pour modifier ou supprimer le message
     emitInfoPost() {
-      this.$emit("infosPost", { post: this.post });
+      this.$emit("infos-post", { post: this.post });
     },
     changeEditStyle(value) {
       this.$store.dispatch("changeEditStyle", value);

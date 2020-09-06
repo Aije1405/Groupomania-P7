@@ -14,7 +14,7 @@
         <div class="form-group">
           <label for="inputPassword">🔒 Votre mot de passe</label>
           <input  type="password" class="form-control" id="inputPassword" v-model="dataSignup.password"/>
-          <small>Votre mot de passe doit contenir au moins 8 caractères dont 1 majuscule, 1 minuscule et un chiffre</small>
+          <small>Votre mot de passe doit contenir au moins 6 caractères dont 1 majuscule, 1 minuscule et un chiffre</small>
         </div>
         <button @click.prevent="sendSignup" type="submit" class="btn btn-danger mb-3 mt-3">Créer mon compte 👌</button>
       </div>
@@ -30,7 +30,7 @@ import axios from "axios";
 
 
 export default {
-  name: "SignUp",
+  name: "Signup",
   data() {
     return {
       dataSignup: {
@@ -45,9 +45,9 @@ export default {
     ...mapState(["user"])
   },
   methods: {
-    // requête pour créer un user, sécurité grâce au regex
+    //requête pour créer un user, sécurité grâce au regex
     sendSignup() {
-      const regexPassword = /((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20})/;
+      const regexPassword = /((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20})/;
       const regexEmail = /^[a-z0-9._-]+@[a-z0-9.-]{2,}[.][a-z]{2,3}$/;
       const usernameRegex = /^[a-zA-Z ,.'-]+$/;
       if (
@@ -59,14 +59,14 @@ export default {
           .then(response => {
             console.log(response);
             this.$router.push({ path: 'Wall' })
-            //Réinitialisation des champs après saisie
+            //réinitialisation des champs après saisie
             this.dataSignup.email = null;
             this.dataSignup.username = null;
             this.dataSignup.password = null;
           })
           .catch(error => console.log(error));
       } else {
-        alert("les champs ne sont pas correctement remplis !");
+        alert("Attention, vous n'avez pas rempli les champs correctement !");
       }
     }
   }
