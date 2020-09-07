@@ -22,7 +22,7 @@
             <small class="user-info__block__output">
               Doit contenir au minimum 6 caractères dont une majuscule, une miniscule et un chiffre </small>
           </div>
-          <button type="button" class="btn btn-secondary mr-5" data-toggle="modal" data-target="#BoxModalChgPwd" @click="testInputs">Modifier mes informations ⚒</button>
+          <button type="button" class="btn btn-secondary mr-5" data-toggle="modal" data-target="#BoxModalChgPwd" @click="testInputs">Modifier mes informations</button>
 
 <!--modale-->
           <div class="modal fade" id="BoxModalChgPwd" tabindex="-1" role="dialog" aria-labelledby="BoxModalChgPwd__title" aria-hidden="true">
@@ -71,7 +71,7 @@
     
 
         </div>
-        <button type="button" class="btn btn-danger white d-block mx-auto mt-5 mb-2" @click="deleteAccount">Supprimer mon compte ☠ </button>
+        <button type="button" class="btn btn-danger white d-block mx-auto mt-5 mb-2" @click="deleteAccount">Supprimer mon compte</button>
       </div>
     </section>
   </main>

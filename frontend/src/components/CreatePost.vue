@@ -4,12 +4,12 @@
       <h3 class="mt-2">Créer un nouveau message</h3>
       <form enctype="multipart/form-data" action="/create" method="post">
         <div class="input-group ">
-          <label for="input_text">- Que voulez-vous nous dire ? -</label>
+          <label for="input_text">Votre texte</label>
           <br />
           <textarea v-model="contentPost.content" class="input-text" rows="3" id="input_text" type="text" />
         </div>
            <div>
-            <div class="inputFile"> Ajouter une image
+            <div class="inputFile">Votre image
                 <input name="inputFile" placeholder="Choisir un fichier" id="inputFile" type="file" class="inputFile" @change="onFileChange" accept="image/*">
             </div>
               <div class="image-preview" v-if="contentPost.imageData.length > 0">

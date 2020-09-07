@@ -11,7 +11,7 @@
           <label for="inputPassword">🔒 Votre mot de passe</label>
           <input  type="password" class="form-control" id="inputPassword" v-model="dataLogin.password" />
         </div>
-        <small> ◾ Vous n'avez pas encore de compte ? <router-link class="redirection-signup" to="/signup">Alors enregistrez-vous ‼</router-link> ◾ </small> <br>
+        <small>Vous n'avez pas encore de compte ? <router-link class="redirection-signup" to="/signup">Alors enregistrez-vous ‼</router-link></small> <br>
         <button @click.prevent="logIn" type="submit" class="btn btn-danger mb-3 mt-3">Se connecter</button>
       </div>
     </form>
