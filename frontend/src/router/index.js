@@ -1,5 +1,5 @@
 import { createApp } from 'vue'
-import VueRouter from 'vue-router'
+import VueRouter from 'router'
 import Accueil from '../views/accueil.vue'
 import Signup from '../views/signup.vue'
 import Login from '../views/login.vue'
@@ -7,6 +7,8 @@ import User from '../views/user.vue'
 import Wall from '../views/wall.vue'
 
 createApp(App)
+.use(router)
+
 
 const routes = [
   {
