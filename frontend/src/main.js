@@ -1,14 +1,8 @@
-import 'bootstrap/dist/css/bootstrap.min.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
-import { createApp } from 'vue'
-import { createStore } from 'vuex'
-
+import Vue from 'vue'
 import App from './App.vue'
 
+Vue.config.productionTip = false
 
-const store = createStore()
-
-createApp(App)
-.use(store)
-.mount('#app');
-
+new Vue({
+  render: h => h(App),
+}).$mount('#app')
