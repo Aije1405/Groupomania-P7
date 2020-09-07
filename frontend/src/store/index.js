@@ -1,8 +1,10 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import { createApp } from 'vue'
+import { createStore } from 'vuex'
 import axios from 'axios'
 
-Vue.use(Vuex)
+const store = createStore()
+createApp(App)
+
 
 export default new Vuex.Store({
   state: {
