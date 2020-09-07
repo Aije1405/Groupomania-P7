@@ -29,7 +29,7 @@ import modale from "../components/modale"
 
 
 export default {
-  name: "signUp",
+  name: "Login",
   data() {
     return {
       dataLogin: {
@@ -68,7 +68,7 @@ export default {
             })
           
       } else {
-        console.log("oops !");
+        console.log("erreur");
       }
     }
   }

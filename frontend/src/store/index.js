@@ -22,7 +22,7 @@ export default new Vuex.Store({
         state.user.username = username,
           state.user.userId = userId,
           state.user.email = email,
-          state.user.token = localStorage.getItem('token'),
+          state.user.token = localStorage.getItem('token'), //
           state.user.isAdmin = isAdmin
     },
     
