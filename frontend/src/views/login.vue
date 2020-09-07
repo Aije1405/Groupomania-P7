@@ -12,7 +12,7 @@
           <input  type="password" class="form-control" id="inputPassword" v-model="dataLogin.password" />
         </div>
         <small> ◾ Vous n'avez pas encore de compte ? <router-link class="redirection-signup" to="/signup">Alors enregistrez-vous ‼</router-link> ◾ </small> <br>
-        <button @click.prevent="logIn" type="submit" class="btn btn-danger mb-3 mt-3">Se connecter 👋</button>
+        <button @click.prevent="logIn" type="submit" class="btn btn-danger mb-3 mt-3">Se connecter</button>
       </div>
     </form>
     <modale v-bind:revele="revele" v-bind:toggleModale="toggleModale"></modale>
@@ -79,12 +79,7 @@ export default {
 
 .cadre{
   padding: 1%;
-  border: grey 3px solid !important;
-  border-radius: 20px;
   background-color: white;
-}
-.btn{
-  background-color: rgb(33, 33, 129) !important;
 }
 .main{
   margin-top: 16%;

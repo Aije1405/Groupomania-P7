@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="block-post w-75 mt-5">
-      <h3 class="mt-2">◼ Créer un nouveau message ◼</h3>
+      <h3 class="mt-2">Créer un nouveau message</h3>
       <form enctype="multipart/form-data" action="/create" method="post">
         <div class="input-group ">
           <label for="input_text">- Que voulez-vous nous dire ? -</label>
@@ -101,14 +101,10 @@ export default {
 h3{
  text-align: center;
 }
-.block-post{
-  border: grey 1px solid !important;
-}
 .image-preview {
    padding: 20px;
 }
 img.preview {
-    border: 1px solid rgb(20, 20, 20);
     padding: 5px;
 }
 .btn-poster{

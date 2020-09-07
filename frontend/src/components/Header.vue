@@ -1,10 +1,10 @@
 <template>
-  <nav class="row navbar navbar-expand-lg navbar-dark bg-dark fixed-top px-5">
+  <nav class="row navbar navbar-expand-lg navbar-light bg-light fixed-top px-5">
     <button class="navbar-toggler" type="button"  data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span></button>
     <router-link class="navbar-link" to="/wall"><img class="imglogo" src="../assets/icon-left-font-monochrome-red.png" alt="Logo Groupomania" /></router-link>
  
-  <div class="collapse navbar-collapse justify-content navbar-dark bg-dark" id="navbarToggle">
+  <div class="collapse navbar-collapse justify-content navbar-light bg-light" id="navbarToggle">
       <ul class="navbar-nav mt-2">
         
         <li class="nav-item " v-if="user.token !== null">
@@ -14,7 +14,7 @@
           <router-link class="nav-link" to="/signup"><button type="button" class="btn btn-secondary">+ Créer un compte</button></router-link>
         </li>
         <li class="nav-item" v-if="user.token == null">
-          <router-link class="nav-link" to="/login"><button type="button" class="btn btn-danger">Se connecter</button></router-link>
+          <router-link class="nav-link" to="/login"><button type="button" class="btn btn-secondary">Se connecter</button></router-link>
         </li>
         <li class="nav-item  " v-if="user.token !== null">
           <router-link class="nav-link" to="/user"><button type="button" class="btn btn-secondary">~{{ user.username }}~ 👤</button></router-link>

@@ -29,12 +29,9 @@ h1{
   font-size: 3em !important;
   font-weight: 500 !important;
   margin-top: 22%;
-  background-color: grey;
   text-align: center;
   padding: 2%;
-  border: rgb(49, 49, 49);
-  border-width: 2px;
-  border-style: solid;
+
   
 }
 

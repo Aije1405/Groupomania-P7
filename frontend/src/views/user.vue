@@ -4,9 +4,6 @@
         <hr />
     <section class="row user-info ml-5 pl-5 pr-5">
       <div class="col-12">
-        <h2>
-          <u>Mes informations personnelles</u>
-        </h2>
         <div class="user-info__block ">
           <p class="user-info__block__title title mb-0 mt-3">Email</p>
           <p class="user-info__block__output">
@@ -194,19 +191,14 @@ export default {
 .main-connect{
   margin-top: 10%;
   background-color: rgba(185, 184, 184, 0.801);
-  border: 2px;
-  border-style: double;
-  border-color: #fd2d01;
 }
 h1{
-  color: #fd2d01;
-  font-family: fantasy;
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
   margin-top: 2%;
   text-align: center;
 }
 hr{
-  border-width: 3px;
-  border-color:#fd2d01;
   width: 75%;
 }
 .title{

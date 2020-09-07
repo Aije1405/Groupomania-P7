@@ -10,6 +10,7 @@
         <div class="form-group">
           <label for="inputUsername">👤 Votre nom d'utilisateur</label>
           <input type="text" class="form-control" id="inputUsername" v-model="dataSignup.username" />
+          <small>Votre nom d'utilisateur ne peut contenir que des lettres</small>
         </div>
         <div class="form-group">
           <label for="inputPassword">🔒 Votre mot de passe</label>
@@ -80,9 +81,6 @@ export default {
   border: grey 3px solid !important;
   border-radius: 20px;
   background-color: white;
-}
-.btn{
-  background-color: rgb(33, 33, 129) !important;
 }
 .main{
   margin-top: 16%;
