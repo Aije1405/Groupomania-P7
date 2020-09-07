@@ -13,6 +13,11 @@ sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.
   dialect: process.env.DB_DIALECT
 });
 
+//connexion à la database
+sequelize.authenticate()
+  .then(() => console.log('La connexion est établie.'))
+  .catch((err) => console.log('La connexion a échoué', err));
+
 fs
   .readdirSync(__dirname)
   .filter(file => {
