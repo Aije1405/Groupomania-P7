@@ -71,7 +71,6 @@ exports.listMsg = (req, res) => {
 exports.delete = (req, res) => {
     //req => userId, postId, user.isAdmin
     let userOrder = req.body.userIdOrder;
-    console.log(req.body)
     //identification du demandeur
     let id = utils.getUserId(req.headers.authorization)
     models.User.findOne({

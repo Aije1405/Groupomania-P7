@@ -3,7 +3,7 @@
     <div class="card-header d-flex justify-content-between">
       <div class="container">Publié par : <strong class="text">{{message.User.username}}</strong> le <strong class="text">{{message.createdAt}}</strong> </div>
       <div class="d-flex flex-row">
-        <img width="24" height="24" class="hand" src="../assets/pencil.png" />
+        <img width="24" height="24" @click="openDialog" class="hand" src="../assets/pencil.png" />
         <img width="24" height="24" @click="deleteMessage" class="ml-3 hand" src="../assets/bin.png" />
       </div>
     </div>
@@ -39,6 +39,9 @@ export default {
   methods: {
     deleteMessage(){
       this.$emit("deleteMessage", this.id)
+    },
+    openDialog(){
+      this.$emit("openDialog", this.id, this.message)
     },
     changeEditStyle(value) {
       this.$store.dispatch("changeEditStyle", value);

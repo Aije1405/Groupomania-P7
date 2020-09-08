@@ -1,5 +1,5 @@
 <template>
-  <div id="wall" class="wall">
+  <div id="wall" class="wall" data-app>
     <CreatePost />
     <ModifPost :message="dialog.message" :dialog="dialog.show"/>
     <Post 
@@ -7,7 +7,8 @@
       v-bind:key="message.id" 
       :message="message" 
       :id="message.id"
-      v-on:deleteMessage="deleteMessage"/>
+      v-on:deleteMessage="deleteMessage"
+      v-on:openDialog="openDialog"/>
     <modalBoxModerate :message="message" />
   </div>
 </template>
@@ -36,7 +37,7 @@ export default {
         image: ""
       },
       dialog:{
-        message:"",
+        message:null,
         show:false
       },
       allMessages: []
@@ -64,6 +65,13 @@ export default {
         }) // ...Si non on envoi une erreur
         .catch(error => console.log(error));
     },
+    openDialog(id, message) {
+      this.dialog = {
+        message: message,
+        show:true
+      }
+      
+    }
   },
   computed: {
     ...mapState(["user", "editOption"])
