@@ -30,33 +30,18 @@
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title" id="BoxModalChgPwd__title">Modifer mon mot de passe </h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
                 <div class="modal-body">
                   <form>
                     <div class="form-group">
                       <label for="InputNewPassword">Mon nouveau mot de passe</label>
-                      <input
-                        type="password"
-                        class="form-control"
-                        id="InputNewPassword"
-                        v-model="changePwd.newPassword"
-                      />
-                      <small
-                        id="emailHelp"
-                        class="form-text text-muted"
-                      >Au minimum 6 caractères dont une majuscule, un minuscule et un chiffre</small>
+                      <input type="password" class="form-control" id="InputNewPassword" v-model="changePwd.newPassword"/>
+                      <small id="emailHelp" class="form-text text-muted">Au minimum 6 caractères dont une majuscule, un minuscule et un chiffre</small>
                     </div>
                     <div class="form-group">
                       <label for="RepeatInputNewPassword">Je confirme mon nouveau mot de passe</label>
-                      <input
-                        type="password"
-                        class="form-control"
-                        id="RepeatInputNewPassword"
-                        v-model="changePwd.RepeatNewPassword"
-                      />
+                      <input type="password" class="form-control" id="RepeatInputNewPassword" v-model="changePwd.RepeatNewPassword"/>
                     </div>
                   </form>
                 </div>
@@ -68,8 +53,6 @@
               </div>
             </div>
           </div>
-    
-
         </div>
         <button type="button" class="btn btn-danger white d-block mx-auto mt-5 mb-2" @click="deleteAccount">Supprimer mon compte</button>
       </div>
@@ -115,7 +98,7 @@ export default {
         .catch(error => console.log(error));
     },
 
-    // fonction pour changer le mot de passe
+    //fonction pour changer le mot de passe
     changePassword() {
       //vérification input nouveau password
       if (
@@ -190,7 +173,7 @@ export default {
 <style scope>
 .main-connect{
   margin-top: 10%;
-  background-color: rgba(185, 184, 184, 0.801);
+  background-color: lightgray;
 }
 h1{
   color: black;

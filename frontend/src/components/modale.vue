@@ -42,8 +42,7 @@ export default {
     right: 0;
 }
 .modale {
-    background: #f1f1f1;
-    color: #333;
+    background: whitesmoke;
     padding: 50px;
     position: fixed;
     bottom: 40%;

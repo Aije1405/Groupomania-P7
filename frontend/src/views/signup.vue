@@ -78,7 +78,6 @@ export default {
 
 .cadre{
   padding: 1%;
-  border: grey 3px solid !important;
   border-radius: 20px;
   background-color: white;
 }

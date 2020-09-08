@@ -22,7 +22,6 @@
               <img class="img-thumbnail" :src="post.attachement" />
               <button type="button" class="btn btn-danger" @click='deleteImgAction'>Supprimer l'image ?</button>
             </div>
-
             <span id="msgReturnAPI" class="mx-3"></span>
           </form>
         </div>
