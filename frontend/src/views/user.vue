@@ -1,6 +1,6 @@
 <template>
   <main class="main-connect">
-        <h1> Paramètres de mon profil </h1>
+        <h1> Paramètres de profil </h1>
         <hr />
     <section class="row user-info ml-5 pl-5 pr-5">
       <div class="col-12">

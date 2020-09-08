@@ -11,13 +11,13 @@
           <router-link class="nav-link " to="/wall"><button type="button" class="btn btn-secondary">Publications 💬</button></router-link>
         </li>
         <li class="nav-item" v-if="user.token == null">
-          <router-link class="nav-link" to="/signup"><button type="button" class="btn btn-secondary">+ Créer un compte</button></router-link>
+          <router-link class="nav-link" to="/signup"><button type="button" class="btn btn-secondary">Créer un compte</button></router-link>
         </li>
         <li class="nav-item" v-if="user.token == null">
           <router-link class="nav-link" to="/login"><button type="button" class="btn btn-secondary">Se connecter</button></router-link>
         </li>
         <li class="nav-item  " v-if="user.token !== null">
-          <router-link class="nav-link" to="/user"><button type="button" class="btn btn-secondary">~{{ user.username }}~ 👤</button></router-link>
+          <router-link class="nav-link" to="/user"><button type="button" class="btn btn-secondary">{{ user.username }} 👤</button></router-link>
         </li>
         <li class="nav-item mt-2" v-if="user.token !== null">
           <button type="button" class="btn btn-danger" @click="disconnect">Déconnexion 👋</button>

@@ -1,12 +1,7 @@
 <template>
 
     <body>
-        <div>
-           <h1 class="display-3">
-             Groupomania - Bienvenue sur votre réseau social !
-           </h1>
-        </div>
-
+        
     </body>
 
 </template>
