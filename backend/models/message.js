@@ -1,16 +1,16 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Post = sequelize.define('Post', {
+  const Message = sequelize.define('Message', {
     content: DataTypes.STRING,
     attachement: DataTypes.STRING,
   },
     {});
-  Post.associate = function (models) {
-    models.Post.belongsTo(models.User, {
+  Message.associate = function (models) {
+    models.Message.belongsTo(models.User, {
       foreignKey: { //application clé étrangère posée sur la table
         allowNull: false
       }
     });
   };
-  return Post;
+  return Message;
 };

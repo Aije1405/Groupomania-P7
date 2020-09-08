@@ -1,54 +1,27 @@
 <template>
-  <div class="modal fade" id="modalEditPost"  tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true" >
-    <div class="modal-dialog">
-    
-    <!--modale pour la modification du post-->
-      <div class="modal-content" v-if="editOption =='modify'">
-        <div class="modal-header">
-          <h5 class="modal-title" id="ModalLabel">Voulez-vous modifier votre publication ?</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form enctype="multipart/form-data" action="/update" method="put">
-            <div class="input-group mb-3">
-              <label for="input_text">Modifiez votre texte</label>
-              <br />
-              <textarea class="input-text" id="inputNewText" type="text" :value="post.content"></textarea>
-            </div>
-            <div class="input-group mb-3" v-if="post.attachement">
-              <br />
-              <img class="img-thumbnail" :src="post.attachement" />
-              <button type="button" class="btn btn-danger" @click='deleteImgAction'>Supprimer l'image ?</button>
-            </div>
-            <span id="msgReturnAPI" class="mx-3"></span>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
-          <button type="button" class="btn btn-secondary" @click="updatePost">Modifier</button>
-        </div>
-      </div>
-
-      <!-- Une modale apparait lorsque le bouton supprimé est cliqué -->
-      <div class="modal-content" v-else>
-        <div class="modal-header">
-          <h5 class="modal-title" id="ModalLabel">Supprimer cette publication ? <span class="id">(id: {{post.id}})</span></h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <p>Etes-vous sûr de vouloir supprimer cette publication ?</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-          <button type="button" class="btn btn-danger" @click="deletePost">Supprimer</button>
-        </div>
-      </div>
-    </div>
-  </div>
+<v-row justify="center">
+  <v-dialog v-model="dialog" persistent max-width="600px">
+      <v-card>
+        <v-card-title>
+          <span class="headline">Message</span>
+        </v-card-title>
+        <v-card-text>
+          <v-container>
+            <v-row>
+              <v-col cols="12" sm="6" md="4">
+                <v-text-field label="Legal first name*" required></v-text-field>
+              </v-col>
+            </v-row>
+          </v-container>
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="blue darken-1" text @click="dialog = false">Close</v-btn>
+          <v-btn color="blue darken-1" text @click="dialog = false">Save</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+    </v-row>
 </template>
 
 <script>
@@ -58,7 +31,7 @@ import { mapState } from "vuex";
 import axios from "axios";
 
 export default {
-  name: "modalAlerte",
+  name: "ModifPost",
   data() {
     return {
       deleteImg: false
@@ -68,36 +41,18 @@ export default {
     ...mapState(["user", "editOption"])
   },
   props: {
-    post: {
-      type: Object,
-      default() {}
+    dialog:{
+      type: Boolean
     }
   },
   methods: {
-    //pour supprimer message
-    deletePost() {
-      axios
-      // requête delete grâce au user token 
-        .delete("http://localhost:3000/api/post/delete", {
-          headers: {
-            Authorization: "Bearer " + localStorage.getItem("token")
-          },
-          data: {
-            postId: this.post.id,
-            userIdOrder: this.user.userId
-          }
-        }) // Si oui on supprime...
-        .then(() => {
-          window.location.reload();
-        }) // ...Si non on envoi une erreur
-        .catch(error => console.log(error));
-    },
+    
 //modification message
-    updatePost() {
+    updateMessage() {
       let newInput = document.getElementById("inputNewText").value;
       //On verifie si changements existent ...
       let newContent = false;
-      if (newInput !== this.post.content || this.deleteImg != false) {
+      if (newInput !== this.message.content || this.deleteImg != false) {
         newContent = true;
       }
       //...Si oui on effectue ses changements
@@ -106,7 +61,7 @@ export default {
           .put( //requête put pour modifier le post existant avec la suppression de l'image
             "http://localhost:3000/api/post/update",
             {
-              postId: this.post.id,
+              messageId: this.message.id,
               userIdOrder: this.user.userId,
               newText: newInput,
               newImg: null
@@ -133,7 +88,7 @@ export default {
           .put(
             "http://localhost:3000/api/post/update",
             {
-              postId: this.post.id,
+              messageId: this.message.id,
               userIdOrder: this.user.userId,
               newText: newInput,
             },

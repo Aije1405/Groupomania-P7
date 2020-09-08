@@ -27,13 +27,15 @@ exports.create = (req, res) => {
                 if ((content == 'null' && attachmentURL == null)) {
                     res.status(400).json({ error: 'Rien à publier' })
                 } else {
-                    models.Post.create({
+                    let date = new Date()
+                    models.Message.create({
                         content: content,
                         attachement: attachmentURL,
-                        UserId: user.id
+                        UserId: user.id,
+                        createdAt: date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate() + " " + date.getHours() + ":" + date.getMinutes()
                     })
-                        .then((newPost) => {
-                            res.status(201).json(newPost)
+                        .then((newMessage) => {
+                            res.status(201).json(newMessage)
                         })
                         .catch((err) => {
                             res.status(500).json(err)
@@ -48,16 +50,16 @@ exports.create = (req, res) => {
 
 //afficher les message sur le mur
 exports.listMsg = (req, res) => {
-    models.Post.findAll({
+    models.Message.findAll({
         include: [{
             model: models.User,
             attributes: ['username']
         }],
         order: [['createdAt', 'DESC']]
     })
-        .then(posts => {
-            if (posts.length > null) {
-                res.status(200).json(posts)
+        .then(messages => {
+            if (messages.length > null) {
+                res.status(200).json(messages)
             } else {
                 res.status(404).json({ error: 'Pas de messages à afficher' })
             }
@@ -69,6 +71,7 @@ exports.listMsg = (req, res) => {
 exports.delete = (req, res) => {
     //req => userId, postId, user.isAdmin
     let userOrder = req.body.userIdOrder;
+    console.log(req.body)
     //identification du demandeur
     let id = utils.getUserId(req.headers.authorization)
     models.User.findOne({
@@ -78,29 +81,29 @@ exports.delete = (req, res) => {
         .then(user => {
             //vérification que le demandeur est soit l'admin soit celui qui a posté le message
             if (user && (user.isAdmin == true || user.id == userOrder)) {
-                console.log('Suppression id du message :', req.body.postId);
-                models.Post
+                console.log('Suppression id du message :', req.body.messageId);
+                models.Message
                     .findOne({
-                        where: { id: req.body.postId }
+                        where: { id: req.body.messageId }
                     })
-                    .then((postFind) => {
+                    .then((messageFind) => {
 
-                        if (postFind.attachement) {
-                            const filename = postFind.attachement.split('/images/')[1];
+                        if (messageFind.attachement) {
+                            const filename = messageFind.attachement.split('/images/')[1];
                             console.log(filename);
                             fs.unlink(`images/${filename}`, () => {
-                                models.Post
+                                models.Message
                                     .destroy({
-                                        where: { id: postFind.id }
+                                        where: { id: messageFind.id }
                                     })
                                     .then(() => res.end())
                                     .catch(err => res.status(500).json(err))
                             })
                         }
                         else {
-                            models.Post
+                            models.Message
                                 .destroy({
-                                    where: { id: postFind.id }
+                                    where: { id: messageFind.id }
                                 })
                                 .then(() => res.end())
                                 .catch(err => res.status(500).json(err))
@@ -125,14 +128,14 @@ exports.update = (req, res) => {
         .then(user => {
             //vérification que le demandeur est soit l'admin soit celui qui a posté le message
             if (user && (user.isAdmin == true || user.id == userOrder)) {
-                console.log('Modif ok pour le message :', req.body.postId);
-                models.Post
+                console.log('Modif ok pour le message :', req.body.messageId);
+                models.Message
                     .update(
                         {
                             content: req.body.newText,
                             attachement: req.body.newImg
                         },
-                        { where: { id: req.body.postId } }
+                        { where: { id: req.body.messageId } }
                     )
                     .then(() => res.end())
                     .catch(err => res.status(500).json(err))

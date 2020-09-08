@@ -1,10 +1,10 @@
 <template>
-  <nav class="row navbar navbar-expand-lg navbar-light bg-light fixed-top px-5">
+  <nav class="row navbar navbar-expand-lg navbar-light bg-light fixed-top px-5 d-flex">
     <button class="navbar-toggler" type="button"  data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span></button>
     <router-link class="navbar-link" to="/wall"><img class="imglogo" src="../assets/icon-left-font-monochrome-red.png" alt="logo rouge Groupomania" /></router-link>
  
-  <div class="collapse navbar-collapse justify-content navbar-light bg-light" id="navbarToggle">
+  <div class="collapse navbar-collapse justify-content navbar-light bg-light " id="navbarToggle">
       <ul class="navbar-nav mt-2">
         <li class="nav-item " v-if="user.token !== null">
           <router-link class="nav-link " to="/wall"><button type="button" class="btn btn-secondary">Publications 💬</button></router-link>

@@ -6,7 +6,7 @@ const helmet = require("helmet");
 require('dotenv').config()
 
 const userRoutes = require('./routes/user');
-const postRoutes = require('./routes/post');
+const postRoutes = require('./routes/message');
 
 const app = express();
 

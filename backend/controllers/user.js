@@ -147,7 +147,7 @@ exports.deleteProfile = (req, res) => {
             .then(user => {
                 if (user != null) {
                     //suppression de tous les posts de l'user même si = 0
-                    models.Post
+                    models.Message
                         .destroy({
                             where: { userId: user.id }
                         })

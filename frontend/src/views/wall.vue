@@ -1,8 +1,14 @@
 <template>
   <div id="wall" class="wall">
     <CreatePost />
-    <Post v-for="post in allPosts" v-bind:key="post.id" :post="post" @infosPost="setInfos" />
-    <modalBoxModerate :post="post" />
+    <ModifPost :message="dialog.message" :dialog="dialog.show"/>
+    <Post 
+      v-for="message in allMessages" 
+      v-bind:key="message.id" 
+      :message="message" 
+      :id="message.id"
+      v-on:deleteMessage="deleteMessage"/>
+    <modalBoxModerate :message="message" />
   </div>
 </template>
 
@@ -11,29 +17,56 @@ import axios from "axios";
 import CreatePost from "../components/CreatePost";
 import Post from "../components/Post";
 import modalBoxModerate from "../components/ModifPost";
+import ModifPost from '../components/ModifPost';
+import { mapState } from "vuex";
 
 export default {
   name: "Wall",
   components: {
     CreatePost,
     Post,
-    modalBoxModerate
+    modalBoxModerate,
+    ModifPost
   },
   data() {
     return {
-      post: {
+      message: {
         id: "",
         content: "",
         image: ""
       },
-      allPosts: []
+      dialog:{
+        message:"",
+        show:false
+      },
+      allMessages: []
 
     };
   },
   methods: {
     setInfos(payload) {
-      this.post = payload.post;
-    }
+      this.message = payload.message;
+    },
+    //pour supprimer message
+    deleteMessage(id) {
+      console.log(this.user.userId)
+      console.log(id)
+      let data = {
+        messageId: id,
+        userIdOrder: this.user.userId
+      }
+      console.log(data)
+      axios.defaults.headers.common['Authorization'] = "Bearer " + localStorage.getItem("token")
+      // requête delete grâce au user token 
+      axios.post("http://localhost:3000/api/post/delete", data) // Si oui on supprime...
+        .then(() => {
+          window.location.reload();
+        }) // ...Si non on envoi une erreur
+        .catch(error => console.log(error));
+    },
+  },
+  computed: {
+    ...mapState(["user", "editOption"])
   },
   mounted() {
     axios
@@ -44,8 +77,8 @@ export default {
       })
       //.get("http://localhost:3000/api/post",this.$store.state.headerParams)
       .then(response => {
-        console.log("post", response.data);
-        this.allPosts = response.data;
+        console.log("message", response.data);
+        this.allMessages = response.data;
       })
       .catch(error => {
         console.log(error); 
@@ -62,7 +95,7 @@ export default {
   margin: auto;
   padding-top: 10%;
 }
-.block-post {
+.block-message {
   background-color: white;
   width: 50%;
   margin: auto;

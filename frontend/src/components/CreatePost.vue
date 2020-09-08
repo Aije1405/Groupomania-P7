@@ -1,22 +1,24 @@
 <template>
   <div>
-    <div class="block-post w-75 mt-5">
+    <div class="block-message w-75 mt-5">
       <h3 class="mt-2">Créer un nouveau message</h3>
-      <form enctype="multipart/form-data" action="/create" method="post">
+      <form enctype="multipart/form-data" action="/create" method="message">
         <div class="input-group ">
-          <label for="input_text">Votre texte</label>
-          <br />
-          <textarea v-model="contentPost.content" class="input-text" rows="3" id="input_text" type="text" />
+          <v-textarea
+          name="input-7-1"
+          label="Votre texte :"
+          v-model="contentMessage.content" 
+        ></v-textarea>
         </div>
            <div>
             <div class="inputFile">Votre image
                 <input name="inputFile" placeholder="Choisir un fichier" id="inputFile" type="file" class="inputFile" @change="onFileChange" accept="image/*">
             </div>
-              <div class="image-preview" v-if="contentPost.imageData.length > 0">
-               <img class="preview" :src="contentPost.imageData" height="100px">
+              <div class="image-preview" v-if="contentMessage.imageData.length > 0">
+               <img class="preview" :src="contentMessage.imageData" height="100px">
               </div>
         </div>
-        <button type="submit" @click.prevent="createPost" class="btn btn-secondary btn-poster mb-3 mt-3">Poster mon message</button>
+        <button type="submit" @click.prevent="createMessage" class="btn btn-secondary btn-poster mb-3 mt-3">Poster mon message</button>
         <span id='msgReturnAPI' class="mx-3 text-danger" v-if="user.token==null">Veuillez vous connecter</span>
         <span id='msgReturnAPI' class="mx-3" v-else>{{msgError}}</span>
       </form>
@@ -29,13 +31,14 @@
 import axios from "axios";
 import { mapState } from "vuex";
 
+
 export default {
   name: "CreatePost",
   data() {
     return {
-      contentPost: {
+      contentMessage: {
         content: null,
-        postImage: null,
+        messageImage: null,
         imageData: ""
       },
       msgError: ""
@@ -45,11 +48,11 @@ export default {
     ...mapState(["user", "editOption"])
   },
   methods: {
-    createPost() {
+    createMessage() {
       const fd = new FormData();
       //on déclare une constante FormData pour stocker les infos du Post
-      fd.append("inputFile", this.contentPost.postImage); // L'image postée
-      fd.append("content", this.contentPost.content); // Le texte posté
+      fd.append("inputFile", this.contentMessage.messageImage); // L'image postée
+      fd.append("content", this.contentMessage.content); // Le texte posté
 
       if (fd.get("inputFile") == "null" && fd.get("content") == "null") { 
         // si il n'y à rien a publier on affiche un texte d'erreur 
@@ -75,14 +78,14 @@ export default {
     //fonction pour télécharger et faire apparaitre l'image téléchargé dans la création de post
     onFileChange(e) {
        console.log(e);
-         this.contentPost.postImage = e.target.files[0] || e.dataTransfer.files;
-       console.log(this.contentPost.postImage);
+         this.contentMessage.messageImage = e.target.files[0] || e.dataTransfer.files;
+       console.log(this.contentMessage.messageImage);
 
             var input = event.target;
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
                 reader.onload = (e) => {
-                    this.contentPost.imageData = e.target.result;
+                    this.contentMessage.imageData = e.target.result;
                 }
                 reader.readAsDataURL(input.files[0]);
             }

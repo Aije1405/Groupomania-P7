@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => { //appel sequelize
     isAdmin: DataTypes.BOOLEAN
   }, {});
   User.associate = function(models) {
-    models.User.hasMany(models.Post) //association des users et des posts
+    models.User.hasMany(models.Message) //association des users et des posts
   };
   return User;
 };
