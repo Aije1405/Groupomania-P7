@@ -5,6 +5,6 @@ Backend packages : nodeJS, nodemon, express, body-parser, helmet, bcrypt, jsonwe
 Lancer "nodemon serve" sur port 3000
 
 
-Frontend : Vue.js, Bootstrap-vue & jquery, Axios, Router, Vuex
+Frontend : Vue.js, Bootstrap-vue & Vuetify, Axios, Router, Vuex
 
  App running at: http://localhost:8080/ 

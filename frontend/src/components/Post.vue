@@ -58,10 +58,10 @@ export default {
   cursor:pointer;
 }
 .card{
-  border: rgb(24, 10, 95) 1px solid !important;
+  border: grey 1px solid !important;
 }
 .text{
-  color: #fd2d01;
+  color: black;
 }
 .card-header{
   background-color: rgba(167, 162, 162, 0.658);

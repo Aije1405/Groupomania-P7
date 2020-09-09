@@ -140,7 +140,7 @@ exports.update = (req, res) => {
                     .catch(err => res.status(500).json(err))
             }
             else {
-                res.status(401).json({ error: 'suppression du message par utilisateur non autorisé' })
+                res.status(401).json({ error: 'modification du message par utilisateur non autorisé' })
             }
         }
         )

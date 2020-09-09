@@ -50,19 +50,16 @@ export default {
     },
     //pour supprimer message
     deleteMessage(id) {
-      console.log(this.user.userId)
-      console.log(id)
       let data = {
         messageId: id,
         userIdOrder: this.user.userId
       }
-      console.log(data)
       axios.defaults.headers.common['Authorization'] = "Bearer " + localStorage.getItem("token")
       // requête delete grâce au user token 
       axios.post("http://localhost:3000/api/post/delete", data) // Si oui on supprime...
         .then(() => {
           window.location.reload();
-        }) // ...Si non on envoi une erreur
+        }) // ...si non on envoi une erreur
         .catch(error => console.log(error));
     },
     openDialog(id, message) {
@@ -70,7 +67,6 @@ export default {
         message: message,
         show:true
       }
-      
     }
   },
   computed: {
