@@ -17,8 +17,8 @@
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="blue darken-1" text @click="dialog = false">Close</v-btn>
-          <v-btn color="blue darken-1" text @click="modifMessage">Save</v-btn>
+          <v-btn color="blue darken-1" text @click="dialog = false">Fermer</v-btn>
+          <v-btn color="blue darken-1" text @click="modifMessage">Sauvegarder</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -29,7 +29,7 @@
 
 //import axios et bibliothèque vuex
 import { mapState } from "vuex";
-
+import axios from "axios";
 
 export default {
   name: "ModifPost",
@@ -52,18 +52,20 @@ export default {
   methods: {
     modifMessage(){
       this.dialog = false
+      
     },
     //fonction pour supprimer l'image 
     deleteImgAction() {
       this.deleteImg = true;
     }
   }
-};
+}
+
 </script>
 
 <style>
 
-.id{
+.id {
   color: white;
 }
 </style>
