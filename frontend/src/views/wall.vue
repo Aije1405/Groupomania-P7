@@ -1,5 +1,7 @@
 <template>
-  <div id="wall" class="wall" data-app>
+  <div id="wall" class="w-100 m-auto" data-app>
+    <v-img height="100" class="mb-5 mt-5" contain src="../assets/icon-left-font-monochrome-red.png"/>
+
     <CreatePost />
     <ModifPost :id="dialog.id" :dialog="dialog.show" v-on:close="closeDialog"/>
     <Post 
@@ -99,11 +101,6 @@ export default {
 
 <style  scope>
 
-.wall {
-  width: 90%;
-  margin: auto;
-  padding-top: 10%;
-}
 .block-message {
   background-color: white;
   width: 50%;

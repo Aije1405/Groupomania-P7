@@ -1,20 +1,23 @@
 <template>
-  <div id="app" class="container-fluid">
+  <div id="app" class="d-flex">
     <Header />
-      <router-view />
+        <router-view />
   </div>
 </template>
 
 <script>
 import Header from "./components/Header";
 
-
 export default {
   components: {
-    Header
-  }
+    Header,
+  },
 };
 </script>
 
 <style >
+body{
+  background-image: url("assets/fond.png");
+  background-attachment: cover;
+}
 </style>

@@ -1,7 +1,9 @@
 <template>
-<body class="body-intro">
-  <main class="main">
-    <form class="cadre w-50 m-auto">
+<v-container fluid class="w-100">
+  <main class="main  ">
+          <v-img height="100" class="mb-5 mt-5" contain src="../assets/icon-left-font-monochrome-red.png"/>
+
+    <form class="cadre w-75 m-auto mb-5">
       <div class="container">
         <div class="form-group ">
           <label for="inputEmail">📧 Votre e-mail</label>
@@ -21,7 +23,7 @@
       </div>
     </form>
   </main>
-</body>
+</v-container>
 </template>
 
 <script>
@@ -82,8 +84,7 @@ export default {
   background-color: white;
 }
 .main{
-  margin-top: 16%;
-  text-align: center;
+    text-align: center;
 }
 .body-intro{
   margin-top: 25%;

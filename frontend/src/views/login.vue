@@ -1,7 +1,8 @@
 <template>
- <body class="body-intro">
-  <main class="main">
-    <form class="cadre w-50 m-auto">
+  <v-container fluid class="w-100">
+  <v-main class="main">
+        <v-img height="100" class="mb-5 mt-5" contain src="../assets/icon-left-font-monochrome-red.png"/>
+    <form class="cadre w-75 m-auto">
       <div class="container ">
         <div class="form-group ">
           <label for="inputemail ">📧 Votre e-mail</label>
@@ -16,8 +17,8 @@
       </div>
     </form>
     <modale v-bind:revele="revele" v-bind:toggleModale="toggleModale"></modale>
-  </main>
-</body>
+  </v-main>
+  </v-container>
 </template>
 
 <script>
@@ -82,7 +83,6 @@ export default {
   background-color: white;
 }
 .main{
-  margin-top: 16%;
   text-align: center;
 }
 .redirection-signup{

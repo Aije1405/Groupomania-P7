@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Accueil from '../views/accueil.vue'
+
 import Signup from '../views/signup.vue'
 import Login from '../views/login.vue'
 import User from '../views/user.vue'
@@ -13,12 +13,7 @@ Vue.use(VueRouter)
 
 
 const routes = [
-  {
-    path: '/',
-    name: 'Accueil',
-    component: Accueil,
-    meta: { requiresVisitor: true }
-  },
+
   {
     path: '/signup',
     name: 'Signup',

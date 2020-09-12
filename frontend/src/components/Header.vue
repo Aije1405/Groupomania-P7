@@ -1,30 +1,48 @@
 <template>
-  <nav class="row navbar navbar-expand-lg navbar-light bg-light fixed-top px-5 d-flex">
-    <button class="navbar-toggler" type="button"  data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span></button>
-    <router-link class="navbar-link" to="/wall"><img class="imglogo" src="../assets/icon-left-font-monochrome-red.png" alt="logo rouge Groupomania" /></router-link>
- 
-  <div class="collapse navbar-collapse justify-content navbar-light bg-light " id="navbarToggle">
-      <ul class="navbar-nav mt-2">
-        <li class="nav-item " v-if="user.token !== null">
-          <router-link class="nav-link " to="/wall"><button type="button" class="btn btn-secondary">Publications 💬</button></router-link>
-        </li>
-        <li class="nav-item" v-if="user.token == null">
-          <router-link class="nav-link" to="/signup"><button type="button" class="btn btn-secondary">Créer un compte</button></router-link>
-        </li>
-        <li class="nav-item" v-if="user.token == null">
-          <router-link class="nav-link" to="/login"><button type="button" class="btn btn-secondary">Se connecter</button></router-link>
-        </li>
-        <li class="nav-item  " v-if="user.token !== null">
-          <router-link class="nav-link" to="/user"><button type="button" class="btn btn-secondary">{{ user.username }} 👤</button></router-link>
-        </li>
-        <li class="nav-item mt-2" v-if="user.token !== null">
-          <button type="button" class="btn btn-danger" @click="disconnect">Déconnexion 👋</button>
-        </li>
-      </ul>
-  </div>
-</nav>
+  <v-navigation-drawer app fixed expand-on-hover class="h-100">
+    <v-list-item link v-if="user.token !== null">
+      <v-list-item-icon>
+        <v-icon>mdi-account</v-icon>
+      </v-list-item-icon>
+      <v-list-item-title class="black-text">
+        <router-link class="nav-link text-black" to="/user" >{{ user.username }}</router-link>
+      </v-list-item-title>
+    </v-list-item>
+    <v-list >
+      <v-list-item link v-if="user.token !== null">
+        <v-list-item-icon>
+          <v-icon>mdi-message</v-icon>
+        </v-list-item-icon>
+        <v-list-item-title>
+          <router-link class="nav-link text-black" to="/wall">Publications</router-link>
+        </v-list-item-title>
+      </v-list-item>
 
+      <v-list-item link v-if="user.token == null">
+        <v-list-item-icon>
+          <v-icon>mdi-account-multiple</v-icon>
+        </v-list-item-icon>
+        <v-list-item-title>
+          <router-link class="nav-link text-black" to="/signup">Créer un compte</router-link>
+        </v-list-item-title>
+      </v-list-item>
+
+      <v-list-item link v-if="user.token == null">
+        <v-list-item-icon>
+          <v-icon>mdi-account</v-icon>
+        </v-list-item-icon>
+        <v-list-item-title>
+          <router-link class="nav-link text-black" to="/login">Se connecter</router-link>
+        </v-list-item-title>
+      </v-list-item>
+    </v-list>
+
+    <template v-slot:append>
+      <div class="pa-2" v-if="user.token !== null">
+        <v-btn block @click="disconnect">Déconnexion</v-btn>
+      </div>
+    </template>
+  </v-navigation-drawer>
 </template>
 
 <script>
@@ -32,16 +50,15 @@ import { mapState } from "vuex";
 
 export default {
   computed: {
-    ...mapState(["user"])
+    ...mapState(["user"]),
   },
   methods: {
     disconnect() {
       // Pour se déconnecter, On vide le localStorage, on actualise la page et on redirige vers la page login
       localStorage.clear();
-      this.$router.go()
-           
-    }
-  }
+      this.$router.go();
+    },
+  },
 };
 </script>
 
@@ -50,21 +67,25 @@ nav {
   position: fixed;
   top: 0;
 }
-.imglogo{
+.h-100 {
+  height: 100vh !important;
+}
+.imglogo {
   width: 40%;
-
 }
-.btn{
+.btn {
   color: white;
 }
-.btn:hover{
+.btn:hover {
   color: white;
 }
-.navbar-toggler{
-margin-left: 90%;
+.navbar-toggler {
+  margin-left: 90%;
 }
-.navbar-link{
-  width: 80% ;
+.navbar-link {
+  width: 80%;
 }
-
+.text-black{
+  color : #000;
+}
 </style>

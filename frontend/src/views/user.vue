@@ -1,5 +1,8 @@
 <template>
-  <main class="main-connect">
+  <div class="m-auto w-75">
+            <v-img height="100" class=" mt-5" contain src="../assets/icon-left-font-monochrome-red.png"/>
+
+  <main class="main-connect pt-3">
         <h1> Paramètres de profil </h1>
         <hr />
     <section class="row user-info ml-5 pl-5 pr-5">
@@ -20,6 +23,7 @@
       </div>
     </section>
   </main>
+  </div>
 </template>
 
 <script>
