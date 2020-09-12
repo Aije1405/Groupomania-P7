@@ -59,8 +59,7 @@ export default {
       ) {
         axios
           .post("http://localhost:3000/api/user/signup", this.dataSignup)
-          .then(response => {
-            console.log(response);
+          .then(() => {
             this.$router.push({ path: '/login' })
             //réinitialisation des champs après saisie
             this.dataSignup.email = null;

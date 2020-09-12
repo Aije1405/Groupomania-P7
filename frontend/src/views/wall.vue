@@ -88,7 +88,6 @@ export default {
       })
       //.get("http://localhost:3000/api/post",this.$store.state.headerParams)
       .then(response => {
-        console.log("message", response.data);
         this.allMessages = response.data;
       })
       .catch(error => {

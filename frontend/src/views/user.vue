@@ -85,7 +85,6 @@ export default {
             }
           )
           .then(response => {
-            console.log("pwd change", response);
             document.getElementById("retour-api").classList.add("text-success");
             this.retourAPI = response.data.confirmation;
             setTimeout(() => {
