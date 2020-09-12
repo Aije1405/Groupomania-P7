@@ -1,10 +1,10 @@
 Groupomania-P7
 
+Cloner le projet.
 
-Backend packages : nodeJS, nodemon, express, body-parser, helmet, bcrypt, jsonwebtoken, express-bouncer, mysql, multer, sequelize
-Lancer "nodemon serve" sur port 3000
+Le backend se lance grâce à la commande "nodemon serve" sur le port 3000.
 
+Le frontend se lance grâce à la commande "npm run serve" sur le port 8080.
 
-Frontend : Vue.js, Bootstrap-vue & Vuetify, Axios, Router, Vuex
+Base de données SQL: pour la création, se référer aux modèles de tables dans le projet.
 
- App running at: http://localhost:8080/ 
