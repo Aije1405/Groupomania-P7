@@ -60,7 +60,7 @@ export default {
           .post("http://localhost:3000/api/user/login", this.dataLogin)
           .then(response => {
             localStorage.setItem('token',response.data.token)
-            this.$router.push({ path: 'Wall' })
+            this.$router.go()
           })
           .catch(error => { 
             console.log(error)

@@ -38,13 +38,10 @@ export default {
     disconnect() {
       // Pour se déconnecter, On vide le localStorage, on actualise la page et on redirige vers la page login
       localStorage.clear();
-      setTimeout(() => {
-      this.$router.push({ path: '/login' })
-        window.location.reload();
-         }, 500);
+      this.$router.go()
            
-          }
     }
+  }
 };
 </script>
 

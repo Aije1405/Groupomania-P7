@@ -17,6 +17,11 @@ export default new Vuex.Store({
     },
     editOption: ""
   },
+  getters: {
+    isLoggedIn () {
+      return localStorage.getItem('token') !== null
+    }  
+  },
   mutations: {
     //sauvegarde infos des user dans les champs
     saveUserInfos(state, [username, userId, email, isAdmin]) {

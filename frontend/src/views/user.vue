@@ -16,44 +16,6 @@
             <small>{{user.username}}</small>
           </p>
         </div>
-        <div class="user-info__block d-sm-flex justify-content-between user-info__block--flex">
-          <div class="user-info__block">
-            <p class="user-info__block__title title mb-0">Mot de passe</p>
-            <small class="user-info__block__output">
-              Doit contenir au minimum 6 caractères dont une majuscule, une miniscule et un chiffre </small>
-          </div>
-          <button type="button" class="btn btn-secondary mr-5" data-toggle="modal" data-target="#BoxModalChgPwd" @click="testInputs">Modifier mes informations</button>
-
-<!--modale-->
-          <div class="modal fade" id="BoxModalChgPwd" tabindex="-1" role="dialog" aria-labelledby="BoxModalChgPwd__title" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="BoxModalChgPwd__title">Modifer mon mot de passe </h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                </div>
-                <div class="modal-body">
-                  <form>
-                    <div class="form-group">
-                      <label for="InputNewPassword">Mon nouveau mot de passe</label>
-                      <input type="password" class="form-control" id="InputNewPassword" v-model="changePwd.newPassword"/>
-                      <small id="emailHelp" class="form-text text-muted">Au minimum 6 caractères dont une majuscule, un minuscule et un chiffre</small>
-                    </div>
-                    <div class="form-group">
-                      <label for="RepeatInputNewPassword">Je confirme mon nouveau mot de passe</label>
-                      <input type="password" class="form-control" id="RepeatInputNewPassword" v-model="changePwd.RepeatNewPassword"/>
-                    </div>
-                  </form>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                  <button type="button" class="btn btn-success" @click="changePassword">Sauvergarder les modifications</button>
-                </div>
-                <p id="retour-api" class="text-center">{{retourAPI}}</p>
-              </div>
-            </div>
-          </div>
-        </div>
         <button type="button" class="btn btn-danger white d-block mx-auto mt-5 mb-2" @click="deleteAccount">Supprimer mon compte</button>
       </div>
     </section>
@@ -90,7 +52,7 @@ export default {
         .then(() => {
          localStorage.clear();
           setTimeout(() => {
-          this.$router.push({ path: '#/signup' })
+          this.$router.push({ path: '/signup' })
             }, 500);
             window.location.reload();
           })
