@@ -3,8 +3,8 @@
     <div class="card-header d-flex justify-content-between">
       <div class="container">Publié par : <strong class="text">{{message.User.username}}</strong> le <strong class="text">{{message.createdAt}}</strong> </div>
       <div class="d-flex flex-row">
-        <img width="24" height="24" @click="openDialog" class="hand" src="../assets/pencil.png" />
-        <img width="24" height="24" @click="deleteMessage" class="ml-3 hand" src="../assets/bin.png" />
+        <img width="24" height="24" v-if="allow" @click="openDialog" class="hand" src="../assets/pencil.png" />
+        <img width="24" height="24" v-if="allow" class="ml-3 hand" src="../assets/bin.png" />
       </div>
     </div>
     <div class="card-body">
@@ -25,7 +25,10 @@ import { mapState } from "vuex";
 export default {
   name: "Post",
   computed: {
-    ...mapState(["user", "editOption"])
+    ...mapState(["user", "editOption"]),
+    allow(){
+      return this.message.UserId==this.user.userId || this.user.isAdmin
+    }
   },
   props: {
     message: {
@@ -48,7 +51,7 @@ export default {
     }
   },
   mounted(){
-    console.log(this.id);
+    console.log(this.message);
   }
 };
 </script>
