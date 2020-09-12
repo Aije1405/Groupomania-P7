@@ -1,7 +1,7 @@
 <template>
   <div id="wall" class="wall" data-app>
     <CreatePost />
-    <ModifPost :message="dialog.message" :dialog="dialog.show"/>
+    <ModifPost :id="dialog.id" :dialog="dialog.show" v-on:close="closeDialog"/>
     <Post 
       v-for="message in allMessages" 
       v-bind:key="message.id" 
@@ -37,6 +37,7 @@ export default {
         image: ""
       },
       dialog:{
+        id:0,
         message:null,
         show:false
       },
@@ -47,6 +48,9 @@ export default {
   methods: {
     setInfos(payload) {
       this.message = payload.message;
+    },
+    closeDialog(){
+      this.$router.go()
     },
     //pour supprimer message
     deleteMessage(id) {
@@ -64,6 +68,7 @@ export default {
     },
     openDialog(id, message) {
       this.dialog = {
+        id:id,
         message: message,
         show:true
       }

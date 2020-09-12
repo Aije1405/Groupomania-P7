@@ -3,6 +3,21 @@ let models = require('../models');
 let utils = require('../utils/jwtokenUtils');
 const fs = require('fs');
 
+//récupération un seul message
+exports.getMessage = (req, res) => {
+    let messageId = req.params.id
+    models.Message.findOne({
+        attributes: ['id','content'],
+        where: {id: messageId}
+    })
+    .then(message => {
+        if (message == null) {
+            return res.status(404).json({ error: 'le message non existant' })
+        } else {
+            return res.status(200).json(message)
+        }
+    })
+}
 
 //création d'un message
 exports.create = (req, res) => {
@@ -132,7 +147,6 @@ exports.update = (req, res) => {
                     .update(
                         {
                             content: req.body.newText,
-                            attachement: req.body.newImg
                         },
                         { where: { id: req.body.messageId } }
                     )
