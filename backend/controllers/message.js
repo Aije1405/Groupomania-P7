@@ -47,7 +47,6 @@ exports.create = (req, res) => {
                         content: content,
                         attachement: attachmentURL,
                         UserId: user.id,
-                        createdAt: date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate() + " " + date.getHours() + ":" + date.getMinutes()
                     })
                         .then((newMessage) => {
                             res.status(201).json(newMessage)

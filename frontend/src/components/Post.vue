@@ -1,7 +1,7 @@
 <template>
   <div class="card mb-4 w-75 mx-auto">
     <div class="card-header d-flex justify-content-between">
-      <div class="container">Publié par : <strong class="text">{{message.User.username}}</strong> le <strong class="text">{{message.createdAt}}</strong> </div>
+      <div class="container">Publié par : <strong class="text">{{message.User.username}}</strong> le <strong class="text">{{date}}</strong> </div>
       <div class="d-flex flex-row">
         <img width="24" height="24" v-if="allow" @click="openDialog" class="hand" src="../assets/pencil.png" />
         <img width="24" height="24" v-if="allow" class="ml-3 hand" src="../assets/bin.png" />
@@ -24,6 +24,11 @@ import { mapState } from "vuex";
 
 export default {
   name: "Post",
+  data() {
+    return {
+      date:''
+    };
+  },
   computed: {
     ...mapState(["user", "editOption"]),
     allow(){
@@ -51,7 +56,9 @@ export default {
     }
   },
   mounted(){
-    console.log(this.message);
+    let dateMessage = new Date(this.message.createdAt)
+    this.date = dateMessage.getDate() + "-" + dateMessage.getMonth() + "-" + dateMessage.getFullYear() + " à "
+    + dateMessage.getHours() + "h" + dateMessage.getMinutes()
   }
 };
 </script>
