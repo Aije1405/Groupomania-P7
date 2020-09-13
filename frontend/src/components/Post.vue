@@ -58,7 +58,7 @@ export default {
   mounted(){
     let dateMessage = new Date(this.message.createdAt)
     this.date = dateMessage.getDate() + "-" + dateMessage.getMonth() + "-" + dateMessage.getFullYear() + " à "
-    + dateMessage.getHours() + "h" + dateMessage.getMinutes()
+    + dateMessage.getHours() + "h" + (dateMessage.getMinutes() < 10 ? '0' : '') + dateMessage.getMinutes()
   }
 };
 </script>
