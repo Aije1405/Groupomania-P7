@@ -5,10 +5,10 @@
         <v-icon>mdi-account</v-icon>
       </v-list-item-icon>
       <v-list-item-title class="black-text">
-        <router-link class="nav-link text-black" to="/user" >{{ user.username }}</router-link>
+        <router-link class="nav-link text-black" to="/user">{{ user.username }}</router-link>
       </v-list-item-title>
     </v-list-item>
-    <v-list >
+    <v-list>
       <v-list-item link v-if="user.token !== null">
         <v-list-item-icon>
           <v-icon>mdi-message</v-icon>
@@ -85,7 +85,7 @@ nav {
 .navbar-link {
   width: 80%;
 }
-.text-black{
-  color : #000;
+.text-black {
+  color: #000;
 }
 </style>
