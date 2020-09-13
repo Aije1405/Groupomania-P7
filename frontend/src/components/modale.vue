@@ -6,8 +6,6 @@
                     <p>Attention, e-mail ou mot de passe incorrect ! Veuillez rééssayer !</p>
                 </div>
         </div>
-
-
 </template>
 
 
@@ -52,5 +50,4 @@ export default {
     top: 10px;
     right: 10px;
 }
-
 </style>

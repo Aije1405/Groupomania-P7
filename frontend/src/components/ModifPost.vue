@@ -9,8 +9,7 @@
           <v-container>
             <v-row>
                 <v-textarea
-                  name="input-7-1"
-                  v-model="message.content"
+                  name="input-7-1" v-model="message.content"
                 ></v-textarea>
             </v-row>
           </v-container>
@@ -85,7 +84,6 @@ export default {
 </script>
 
 <style>
-
 .id {
   color: white;
 }

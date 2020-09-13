@@ -7,10 +7,7 @@ import User from '../views/user.vue'
 import Wall from '../views/wall.vue'
 import store from '../store/index.js'
 
-
-
 Vue.use(VueRouter)
-
 
 const routes = [
 

@@ -1,36 +1,39 @@
 <template>
-<v-container fluid class="w-100">
-  <main class="main  ">
-          <v-img height="100" class="mb-5 mt-5" contain src="../assets/icon-left-font-monochrome-red.png"/>
-
-    <form class="cadre w-75 m-auto mb-5">
-      <div class="container">
-        <div class="form-group ">
-          <label for="inputEmail">📧 Votre e-mail</label>
-          <input type="email" class="form-control" id="inputEmail" v-model="dataSignup.email" />
+  <v-container fluid class="w-100">
+    <main class="main">
+      <v-img height="100" class="mb-5 mt-5" contain src="../assets/icon-left-font-monochrome-red.png"/>
+      <form class="cadre w-75 m-auto mb-5">
+        <div class="container">
+          <div class="form-group">
+            <label for="inputEmail">📧 Votre e-mail</label>
+            <input type="email" class="form-control" id="inputEmail" v-model="dataSignup.email" />
+          </div>
+          <div class="form-group">
+            <label for="inputUsername">👤 Votre nom d'utilisateur</label>
+            <input
+              type="text"
+              class="form-control"
+              id="inputUsername"
+              v-model="dataSignup.username"
+            />
+            <small>Votre nom d'utilisateur ne peut contenir que des lettres</small>
+          </div>
+          <div class="form-group">
+            <label for="inputPassword">🔒 Votre mot de passe</label>
+            <input type="password" class="form-control" id="inputPassword" v-model="dataSignup.password"/>
+            <small>Votre mot de passe doit contenir au moins 6 caractères dont 1 majuscule, 1 minuscule et un chiffre</small>
+          </div>
+          <button @click.prevent="sendSignup" type="submit" class="btn btn-danger mb-3 mt-3">Créer mon compte 👌</button>
         </div>
-        <div class="form-group">
-          <label for="inputUsername">👤 Votre nom d'utilisateur</label>
-          <input type="text" class="form-control" id="inputUsername" v-model="dataSignup.username" />
-          <small>Votre nom d'utilisateur ne peut contenir que des lettres</small>
-        </div>
-        <div class="form-group">
-          <label for="inputPassword">🔒 Votre mot de passe</label>
-          <input  type="password" class="form-control" id="inputPassword" v-model="dataSignup.password"/>
-          <small>Votre mot de passe doit contenir au moins 6 caractères dont 1 majuscule, 1 minuscule et un chiffre</small>
-        </div>
-        <button @click.prevent="sendSignup" type="submit" class="btn btn-danger mb-3 mt-3">Créer mon compte 👌</button>
-      </div>
-    </form>
-  </main>
-</v-container>
+      </form>
+    </main>
+  </v-container>
 </template>
 
 <script>
 //import de la bibliothèque et d'axios pour les requêtes
 import { mapState } from "vuex";
 import axios from "axios";
-
 
 export default {
   name: "Signup",
@@ -39,13 +42,13 @@ export default {
       dataSignup: {
         username: null,
         email: null,
-        password: null
+        password: null,
       },
-      msg: ""
+      msg: "",
     };
   },
   computed: {
-    ...mapState(["user"])
+    ...mapState(["user"]),
   },
   methods: {
     //requête pour créer un user, sécurité grâce au regex
@@ -54,39 +57,41 @@ export default {
       const regexEmail = /^[a-z0-9._-]+@[a-z0-9.-]{2,}[.][a-z]{2,3}$/;
       const usernameRegex = /^[a-zA-Z ,.'-]+$/;
       if (
-        (this.dataSignup.email !== null || this.dataSignup.username !== null || this.dataSignup.password !== null) &&
-        (regexPassword.test(this.dataSignup.password) && regexEmail.test(this.dataSignup.email) && usernameRegex.test(this.dataSignup.username))
+        (this.dataSignup.email !== null ||
+          this.dataSignup.username !== null ||
+          this.dataSignup.password !== null) &&
+        regexPassword.test(this.dataSignup.password) &&
+        regexEmail.test(this.dataSignup.email) &&
+        usernameRegex.test(this.dataSignup.username)
       ) {
         axios
           .post("http://localhost:3000/api/user/signup", this.dataSignup)
           .then(() => {
-            this.$router.push({ path: '/login' })
+            this.$router.push({ path: "/login" });
             //réinitialisation des champs après saisie
             this.dataSignup.email = null;
             this.dataSignup.username = null;
             this.dataSignup.password = null;
           })
-          .catch(error => console.log(error));
+          .catch((error) => console.log(error));
       } else {
         alert("Attention, vous n'avez pas rempli les champs correctement !");
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style scope>
-
-.cadre{
+.cadre {
   padding: 1%;
   border-radius: 20px;
   background-color: white;
 }
-.main{
-    text-align: center;
+.main {
+  text-align: center;
 }
-.body-intro{
+.body-intro {
   margin-top: 25%;
 }
-
 </style>

@@ -77,7 +77,6 @@ export default {
 </script>
 
 <style scope>
-
 .cadre{
   padding: 1%;
   background-color: white;
@@ -95,5 +94,4 @@ export default {
 .body-intro{
   margin-top: 25%;
 }
-
 </style>

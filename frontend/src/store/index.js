@@ -4,7 +4,6 @@ import axios from 'axios'
 
 Vue.use(Vuex)
 
-
 export default new Vuex.Store({
   state: {
     //création modèle user
@@ -28,7 +27,7 @@ export default new Vuex.Store({
         state.user.username = username,
           state.user.userId = userId,
           state.user.email = email,
-          state.user.token = localStorage.getItem('token'), //
+          state.user.token = localStorage.getItem('token'), 
           state.user.isAdmin = isAdmin
     },
     

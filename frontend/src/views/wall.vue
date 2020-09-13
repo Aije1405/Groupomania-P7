@@ -1,16 +1,22 @@
 <template>
   <div id="wall" class="w-100 m-auto" data-app>
-    <v-img height="100" class="mb-5 mt-5" contain src="../assets/icon-left-font-monochrome-red.png"/>
+    <v-img
+      height="100"
+      class="mb-5 mt-5"
+      contain
+      src="../assets/icon-left-font-monochrome-red.png"
+    />
 
     <CreatePost />
-    <ModifPost :id="dialog.id" :dialog="dialog.show" v-on:close="closeDialog"/>
-    <Post 
-      v-for="message in allMessages" 
-      v-bind:key="message.id" 
-      :message="message" 
+    <ModifPost :id="dialog.id" :dialog="dialog.show" v-on:close="closeDialog" />
+    <Post
+      v-for="message in allMessages"
+      v-bind:key="message.id"
+      :message="message"
       :id="message.id"
       v-on:deleteMessage="deleteMessage"
-      v-on:openDialog="openDialog"/>
+      v-on:openDialog="openDialog"
+    />
     <modalBoxModerate :message="message" />
   </div>
 </template>
@@ -20,7 +26,7 @@ import axios from "axios";
 import CreatePost from "../components/CreatePost";
 import Post from "../components/Post";
 import modalBoxModerate from "../components/ModifPost";
-import ModifPost from '../components/ModifPost';
+import ModifPost from "../components/ModifPost";
 import { mapState } from "vuex";
 
 export default {
@@ -29,77 +35,76 @@ export default {
     CreatePost,
     Post,
     modalBoxModerate,
-    ModifPost
+    ModifPost,
   },
   data() {
     return {
       message: {
         id: "",
         content: "",
-        image: ""
+        image: "",
       },
-      dialog:{
-        id:0,
-        message:null,
-        show:false
+      dialog: {
+        id: 0,
+        message: null,
+        show: false,
       },
-      allMessages: []
-
+      allMessages: [],
     };
   },
   methods: {
     setInfos(payload) {
       this.message = payload.message;
     },
-    closeDialog(){
-      this.$router.go()
+    closeDialog() {
+      this.$router.go();
     },
     //pour supprimer message
     deleteMessage(id) {
       let data = {
         messageId: id,
-        userIdOrder: this.user.userId
-      }
-      axios.defaults.headers.common['Authorization'] = "Bearer " + localStorage.getItem("token")
-      // requête delete grâce au user token 
-      axios.post("http://localhost:3000/api/post/delete", data) // Si oui on supprime...
+        userIdOrder: this.user.userId,
+      };
+      axios.defaults.headers.common["Authorization"] =
+        "Bearer " + localStorage.getItem("token");
+      // requête delete grâce au user token
+      axios
+        .post("http://localhost:3000/api/post/delete", data) // Si oui on supprime...
         .then(() => {
           window.location.reload();
         }) // ...si non on envoi une erreur
-        .catch(error => console.log(error));
+        .catch((error) => console.log(error));
     },
     openDialog(id, message) {
       this.dialog = {
-        id:id,
+        id: id,
         message: message,
-        show:true
-      }
-    }
+        show: true,
+      };
+    },
   },
   computed: {
-    ...mapState(["user", "editOption"])
+    ...mapState(["user", "editOption"]),
   },
   mounted() {
     axios
       .get("http://localhost:3000/api/post", {
         headers: {
-          Authorization: "Bearer " + localStorage.getItem("token")
-        }
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
       })
-      //.get("http://localhost:3000/api/post",this.$store.state.headerParams)
-      .then(response => {
+      .then((response) => {
         this.allMessages = response.data;
       })
-      .catch(error => {
-        console.log(error); 
+      .catch((error) => {
+        console.log(error);
       }),
       this.$store.dispatch("getUserInfos");
-  }
+  },
 };
 </script>
 
 <style  scope>
-
 .block-message {
   background-color: white;
   width: 50%;
@@ -109,5 +114,4 @@ export default {
   padding: 0.5rem;
   margin-bottom: 1rem;
 }
-
 </style>
