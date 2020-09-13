@@ -77,9 +77,8 @@ export default {
     },
     //fonction pour télécharger et faire apparaitre l'image téléchargé dans la création de post
     onFileChange(e) {
-       console.log(e);
          this.contentMessage.messageImage = e.target.files[0] || e.dataTransfer.files;
-       console.log(this.contentMessage.messageImage);
+      
 
             var input = event.target;
             if (input.files && input.files[0]) {

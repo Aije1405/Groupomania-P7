@@ -18,6 +18,6 @@ export default {
 <style >
 body{
   background-image: url("assets/fond.png");
-  background-attachment: cover;
+  background-attachment: fixed;
 }
 </style>
